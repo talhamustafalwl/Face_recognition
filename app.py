@@ -21,9 +21,15 @@ def error_msg(error_message, status=500, mimetype='application/json'):
     return Response(json.dumps({"error": {"message": error_message}}), status=status, mimetype=mimetype)
 
 
+@app.route('/', methods=['GET'])
+def mainpage():
+    output = json.dumps({"msg": 'face recognition system working '})
+    return success_msg(output)
+
+
 @app.route('/api', methods=['GET'])
 def homepage():
-    output = json.dumps({"msg": 'face recognition system working'})
+    output = json.dumps({"msg": 'face recognition system working api/train=(accept name,file), api/recognize=(accept file) , api/users/:id (GET,DELETE)'})
     return success_msg(output)
 
 
